@@ -44,7 +44,7 @@ except ImportError:
 import xml.etree.cElementTree as ET
 
 __all__ = ('elem_to_internal', 'internal_to_elem', 'elem2json', 'json2elem',
-           'xml2json', 'json2xml')
+           'xml2json', 'json2xml', 'remove_namespace')
 
 def elem_to_internal(elem, strip=True):
     """
@@ -196,6 +196,14 @@ def json2xml(json, factory=ET.Element):
     """
     elem = internal_to_elem(simplejson.loads(json), factory)
     return ET.tostring(elem)
+
+def remove_namespace(doc, namespace):
+    """Remove namespace in the passed document in place."""
+    ns = u'{%s}' % namespace
+    nsl = len(ns)
+    for elem in doc.getiterator():
+        if elem.tag.startswith(ns):
+            elem.tag = elem.tag[nsl:]
 
 def main():
     p = optparse.OptionParser(
