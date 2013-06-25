@@ -198,7 +198,17 @@ def json2xml(json, factory=ET.Element):
     return ET.tostring(elem)
 
 def remove_namespace(doc, namespace):
-    """Remove namespace in the passed document in place."""
+    """
+    Remove namespace in the passed document in place.
+
+    Credit: http://homework.nwsnet.de/releases/45be/
+
+    :param doc:
+        An ElementTree XML object.
+
+    :param namespace:
+        The namespace to strip.
+    """
     ns = u'{%s}' % namespace
     nsl = len(ns)
     for elem in doc.getiterator():
