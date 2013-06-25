@@ -15,3 +15,8 @@ xml2json
 ========
 
 Recursively convert XML to JSON and vice versa.
+
+resolve
+=======
+
+Resolve IPv4/v6 ip addresses and vice versa.
