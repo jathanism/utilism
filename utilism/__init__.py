@@ -19,3 +19,8 @@ __all__.append(xml2json)
 # resolve
 from . import resolve
 __all__.append(resolve)
+
+# misc
+from . import misc
+from misc import *
+__all__.append(misc.__all__)
